@@ -68,10 +68,28 @@ class TinyMCE_Table_Clean_Content{
         array_push( $buttons, '|', 'table_clean' );
         return $buttons;
     }
+
+     
     
 }
  
 $tinyMCE_table_clean_content = new TinyMCE_Table_Clean_Content;
+function load_my_quicktags_inline() {
+ 
+    if ( wp_script_is( 'quicktags' ) ) { ?>
+     
+        <script>
+         
+         QTags.addButton('table-mylng', 'table Mylng', '<table><tbody>', '</tbody></table>');
+         QTags.addButton('table-myln', 'table tr', '<tr>', '</tr>');
+         QTags.addButton('table-myl', 'table td', '<td>', '</td>');
+
+        </script>
+     
+    <?php }
+ 
+}
+add_action( 'admin_print_footer_scripts', 'load_my_quicktags_inline' );
 
 
 
